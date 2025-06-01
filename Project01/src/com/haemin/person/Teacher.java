@@ -24,6 +24,15 @@ public class Teacher {
 	}
 
 
+	public Teacher(String teacherName, String teacherLoginId, String teacherLoginPw,
+			String teacherBirth, String teacherPhone) {
+		this.teacherName = teacherName;
+		this.teacherLoginId = teacherLoginId;
+		this.teacherLoginPw = teacherLoginPw;
+		this.teacherBirth = teacherBirth;
+		this.teacherPhone = teacherPhone;
+	}
+
 	public String getTeacherName() {
 		return teacherName;
 	}

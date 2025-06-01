@@ -1,65 +1,87 @@
 package com.haemin.person;
 
 public class Member {
-	private int memberId;
-	private String memberName;
-	private String loginId;
+	private int id;
+	private String name;
+	private String permission;
+	private String loginid;
 	private String loginPw;
-	private int memberBirth;
-	private String memberPhone;
-	private String memberClassName;
-	private String memberClassLevel;
+	private String birth;
+	private String phone;
+	private String className;
+	private String classLevel;
  
 	public Member() {};
 	
-	public Member(int memberId, String memberName, String loginId, String loginPw, int memberBirth, String memberPhone, String memberClassName, String memberClassLevel) {
-		this.memberId = memberId;
-		this.memberName = memberName;
-		this.loginId = loginId;
+	public Member(int id, String name, String loginid, String loginPw, String birth, String phone, String className, String classLevel) {
+		this.id = id;
+		this.name = name;
+		this.loginid = loginid;
 		this.loginPw = loginPw;
-		this.memberBirth = memberBirth;
-		this.memberPhone = memberPhone;
-		this.memberClassName = memberClassName;
-		this.memberClassLevel = memberClassLevel;
+		this.birth = birth;
+		this.phone = phone;
+		this.className = className;
+		this.classLevel = classLevel;
 	}
 	
-	public Member(int memberId, String memberName, String loginId, String loginPw, int memberBirth, String memberPhone){
-		this.memberId = memberId;
-		this.memberName = memberName;
-		this.loginId = loginId;
+	public Member(int id, String name, String loginid, String loginPw, String birth, String phone){
+		this.id = id;
+		this.name = name;
+		this.loginid = loginid;
 		this.loginPw = loginPw;
-		this.memberBirth = memberBirth;
-		this.memberPhone = memberPhone;
+		this.birth = birth;
+		this.phone = phone;
 	}
 	
-	public Member(String loginId, String loginPw) {
-		this.loginId = loginId;
+	public Member(String name, String permission, String loginid, String loginPw, String birth, String phone){
+		this.name = name;
+		this.setPermission(permission);
+		this.loginid = loginid;
+		this.loginPw = loginPw;
+		this.birth = birth;
+		this.phone = phone;
+	}
+	
+	public Member(String loginid, String loginPw) {
+		this.loginid = loginid;
 		this.loginPw = loginPw;
 	}
-
-
-	public int getMemberId() {
-		return memberId;
+	
+	public Member(int id) {
+		this.id = id;
 	}
 
-	public void setMemberId(int memberId) {
-		this.memberId = memberId;
+
+	public int getId() {
+		return id;
 	}
 
-	public String getMemberName() {
-		return memberName;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public void setMemberName(String memberName) {
-		this.memberName = memberName;
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPermission() {
+		return permission;
+	}
+
+	public void setPermission(String permission) {
+		this.permission = permission;
 	}
 
 	public String getLoginId() {
-		return loginId;
+		return loginid;
 	}
 
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
+	public void setLoginId(String loginid) {
+		this.loginid = loginid;
 	}
 
 	public String getLoginPw() {
@@ -70,36 +92,36 @@ public class Member {
 		this.loginPw = loginPw;
 	}
 
-	public int getMemberBirth() {
-		return memberBirth;
+	public String getBirth() {
+		return birth;
 	}
 
-	public void setMemberBirth(int memberBirth) {
-		this.memberBirth = memberBirth;
+	public void setBirth(String birth) {
+		this.birth = birth;
 	}
 
-	public String getMemberPhone() {
-		return memberPhone;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setMemberPhone(String memberPhone) {
-		this.memberPhone = memberPhone;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-	public String getMemberClassName() {
-		return memberClassName;
+	public String getClassName() {
+		return className;
 	}
 
-	public void setMemberClassName(String memberClassName) {
-		this.memberClassName = memberClassName;
+	public void setClassName(String className) {
+		this.className = className;
 	}
 
-	public String getMemberClassLevel() {
-		return memberClassLevel;
+	public String getClassLevel() {
+		return classLevel;
 	}
 
-	public void setMemberClassLevel(String memberClassLevel) {
-		this.memberClassLevel = memberClassLevel;
+	public void setClassLevel(String classLevel) {
+		this.classLevel = classLevel;
 	}
 
 }

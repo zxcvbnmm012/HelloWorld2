@@ -6,15 +6,15 @@ public class ClassApp {
 	private String classLevel;
 	private String classDate;
 	private String classTime;
-	private int classFee;
+	private String classFee;
 	private String classTeacher;
 	private int classNow;
-	private int classLimit;
+	private String classLimit;
 	
 	public ClassApp() {};
 	
-	public ClassApp(String classCenter, String className, String classLevel, String classDate, String classTime, int classFee, String classTeacher,
-			int classNow, int classLimit) {
+	public ClassApp(String classCenter, String className, String classLevel, String classDate, String classTime, String classFee, String classTeacher,
+			int classNow, String classLimit) {
 		this.classCenter = classCenter;
 		this.className = className;
 		this.classLevel = classLevel;
@@ -68,11 +68,11 @@ public class ClassApp {
 		this.classTime = classTime;
 	}
 
-	public int getClassFee() {
+	public String getClassFee() {
 		return classFee;
 	}
 
-	public void setClassFee(int classFee) {
+	public void setClassFee(String classFee) {
 		this.classFee = classFee;
 	}
 
@@ -92,11 +92,11 @@ public class ClassApp {
 		this.classNow = classNow;
 	}
 
-	public int getClassLimit() {
+	public String getClassLimit() {
 		return classLimit;
 	}
 
-	public void setClassLimit(int classLimit) {
+	public void setClassLimit(String classLimit) {
 		this.classLimit = classLimit;
 	}
 }
