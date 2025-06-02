@@ -16,7 +16,7 @@ import com.haemin.person.Teacher;
 public class SqlDAO extends Sql {
 	
 	public static List<Member> memberTable() {
-		String sql = "SELECT * FROM 회원정보";
+		String sql = "SELECT * FROM 회원정보 order by 회원번호";
 	    getConnect();
 
 	    List<Member> list = new ArrayList<>();
@@ -91,6 +91,7 @@ public class SqlDAO extends Sql {
 				classApp.setClassLevel(rs.getString("분반"));
 				classApp.setClassDate(rs.getString("요일"));
 				classApp.setClassTime(rs.getString("시간"));
+				classApp.setClassFee(rs.getString("금액"));
 				classApp.setClassTeacher(rs.getString("강사"));
 				classApp.setClassNow(rs.getInt("수강신청인원"));
 				classApp.setClassLimit(rs.getString("수강가능인원"));

@@ -41,7 +41,7 @@ public class DAO {
 			break;
 		case 3:
 			msg2();
-			System.out.println("                                             !!  수정할 회원 정보를 입력해주세요  !!");
+			System.out.println("                                          !!  수정할 회원 정보를 입력해주세요  !!");
 			msg2();
 			System.out.println();
 			String name = member.getName();
@@ -105,7 +105,7 @@ public class DAO {
 				System.out.printf("                                             '%s'님의 프로그램 회원 목록입니다\n", name);
 				msg2();
 				System.out.println();
-				showMember(list2);
+				showMember2(list2);
 				System.out.println();
 				break;
 			case 3:
@@ -375,7 +375,7 @@ public class DAO {
 	
 	public static void showSchedProg(List<ClassApp> list) {
 		for (ClassApp cla : list) {
-		    System.out.printf(" %10s |'강좌명': %10s |'분반': %5s |'요일': %5s |'시간': %6s |'금액': %7s원 |'강사': %5s |'수강신청현황': %3d/%s명\n",
+		    System.out.printf(" %10s |'강좌명': %s |'분반': %s |'요일': %s |'시간': %s |'금액': %s원 |'강사': %s |'수강신청현황': %d/%s명\n",
 		    	cla.getClassCenter(),
 		    	cla.getClassName(),
 		        cla.getClassLevel(),
@@ -408,7 +408,22 @@ public class DAO {
 	
 	public static void showMember(List<Member> list) {
 		for (Member member : list) {
-		    System.out.printf("         '회원번호': %3d |'이름': %4s |'주민번호': %8s |'전화번호': %15s |'수강강좌': %10s |'분반': %5s\n",
+		    System.out.printf(" '회원번호': %2d |'이름': %3s |'로그인아이디': %8s |'로그인비밀번호': %6s |'주민번호': %6s |'전화번호': %15s |'수강강좌': %15s |'분반': %5s\n",
+		    	member.getId(),
+		    	member.getName(),
+		    	member.getLoginId(),
+		    	member.getLoginPw(),
+		    	member.getBirth(),
+		        member.getPhone(),
+		        member.getClassName(),
+		        member.getClassLevel());
+
+		}
+	} // end of showMember()
+	
+	public static void showMember2(List<Member> list) {
+		for (Member member : list) {
+		    System.out.printf(" '회원번호': %2d |'이름': %3s |'주민번호': %6s |'전화번호': %15s |'수강강좌': %15s |'분반': %5s\n",
 		    	member.getId(),
 		    	member.getName(),
 		    	member.getBirth(),
@@ -417,7 +432,7 @@ public class DAO {
 		        member.getClassLevel());
 
 		}
-	} // end of showSchedProg()
+	} // end of showMember()
 	
 	public static void showTeacher(List<Teacher> list) {
 		for (Teacher teacher : list) {

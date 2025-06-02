@@ -21,7 +21,10 @@ public class App {
 	public static void execute() {
 
 		System.out.println();
-		System.out.println("                                                 🏠 해민 문화센터 홈페이지 🏠              ");
+		System.out.println("                                                      ❤ WELCOME ❤");
+		System.out.println("                                       __________________________________________");
+		System.out.println("                                     /                                            \\");
+		System.out.println("                                    /              🏠 해민 문화센터 홈페이지 🏠           \\");
 		DAO.msg2();
 		System.out.println();
 		System.out.println("                                                     1. 😎 로그인");
@@ -215,7 +218,8 @@ public class App {
 			System.out.println();
 			System.out.println("                                                   1.회원 추가 \n"
 					+ "                                                   2.회원 삭제 \n"
-					+ "                                                   3.회원 정보 수정");
+					+ "                                                   3.회원 정보 수정 \n"
+					+ "                                                   4.회원 목록");
 			System.out.println();
 			DAO.msg2();
 			System.out.print("                                                ▶ 선택 :   ");
@@ -230,6 +234,7 @@ public class App {
 				System.out.println("                                                      😎 회원 추가 😎 ");
 				join();
 				System.out.printf("                                                   !!  회원 정보 추가 완료  !!");
+				System.out.println();
 				break;
 
 			case 2:
@@ -248,10 +253,11 @@ public class App {
 				DAO.removeMember(name);
 				System.out.println();
 				System.out.printf("                                               !!  '%s' 회원 정보 삭제 완료  !!", name);
+				System.out.println();
 				break;
 			case 3:
 				DAO.msg2();
-				System.out.println("                                          !!  수정할 회원 정보를 입력해주세요  !!");
+				System.out.println("                                              !!  수정할 회원 정보를 입력해주세요  !!");
 				DAO.msg2();
 				System.out.println();
 				System.out.print("                                         ▶ 회원 이름 :   ");
@@ -262,15 +268,27 @@ public class App {
 				String newData = scn.nextLine();
 				System.out.println();
 				DAO.msg2();
-
+				System.out.println();
+				System.out.printf("                                              !!  '%s' 회원 정보 수정 완료  !!", name);
+				System.out.println();
 				member = DAO.modifyMember(name, col, newData);
 				System.out.println();
+				
 				DAO.showMember(member);
+				
+				break;
+			case 4:
 				DAO.msg2();
+				System.out.print("                                               🌞🌞 해민 문화센터 '회원' 목록 🌞🌞        \n");
+				DAO.msg2();
+				member = SqlDAO.memberTable();
+				System.out.println();
+				DAO.showMember(member);
+				
 				break;
 			}
 			System.out.println();
-			DAO.msg3();
+			DAO.msg2();
 			System.out.println("                                        1.🏠 홈으로  2.⏪ 이전 페이지로  3.🌞 관리자 메뉴로  ");
 			DAO.msg2();
 			System.out.printf("                                         ▶ 선택 :    ");
@@ -304,7 +322,8 @@ public class App {
 			System.out.println();
 			System.out.println("                                                   1.강사 추가 \n"
 					+ "                                                   2.강사 삭제 \n"
-					+ "                                                   3.강사 정보 수정");
+					+ "                                                   3.강사 정보 수정 \n"
+					+ "                                                   4.강사 목록");
 			System.out.println();
 			DAO.msg2();
 			System.out.print("                                                ▶ 선택 :   ");
@@ -314,10 +333,14 @@ public class App {
 			DAO.msg3();
 			switch (menu) {
 			case 1:
+				DAO.msg2();
+				System.out.println("                                                      😎 강사 추가 😎");
 				joinTeacher();
 				break;
 			case 2:
 				
+				DAO.msg2();
+				System.out.println("                                                      😎 강사 삭제 😎");
 				DAO.msg2();
 				System.out.println();
 				System.out.println("                                              !!  삭제할 강사 이름을 입력해주세요  !!");
@@ -329,12 +352,15 @@ public class App {
 				System.out.println();
 				DAO.removeTeacher(name);
 				System.out.printf("                                               !!  '%s' 강사 정보 삭제 완료  !!", name);
+				System.out.println();
 				break;
 
 			case 3:
 				DAO.msg2();
-				System.out.println("                                          !!  수정할 강사 정보를 입력해주세요  !!");
+				System.out.println("                                                      😎 강사 수정 😎");
 				DAO.msg2();
+				System.out.println();
+				System.out.println("                                              !!  수정할 강사 정보를 입력해주세요  !!");
 				System.out.println();
 				System.out.print("                                         ▶ 강사 이름  :    ");
 				name = scn.nextLine();
@@ -344,14 +370,29 @@ public class App {
 				String newData = scn.nextLine();
 				System.out.println();
 				DAO.msg2();
-
+				System.out.println();
+				System.out.printf("                                              !!  '%s' 강사 정보 수정 완료  !!", name);
+				System.out.println();
 				teacher = DAO.modifyTeacher(name, col, newData);
 				System.out.println();
 				DAO.showTeacher(teacher);
+				System.out.println();
+				
+				break;
+			case 4:
 				DAO.msg2();
+				System.out.print("                                               🌞🌞 해민 문화센터 '강사' 목록 🌞🌞        \n");
+				DAO.msg2();
+
+				teacher = SqlDAO.teacherTable();
+				System.out.println();
+				DAO.showTeacher(teacher);
+				System.out.println();
+				
+				break;
 			}
 			System.out.println();
-			DAO.msg3();
+			DAO.msg2();
 			System.out.println("                                        1.🏠 홈으로  2.⏪ 이전 페이지로  3.🌞 관리자 메뉴로  ");
 			DAO.msg2();
 			System.out.printf("                                         ▶ 선택 :    ");
@@ -401,9 +442,11 @@ public class App {
 		System.out.println();
 		DAO.msg2();
 		System.out.println();
-		System.out.println("                                              !!  강사 정보 추가 완료  !!");
+		System.out.printf("                                                !!  '%s' 강사 정보 추가 완료  !!", name);
+		System.out.println();
 		System.out.println();
 		DAO.msg2();
+		System.out.println();
 		DAO.showTeacher(SqlDAO.teacherTable());
 
 	} // end of join()
@@ -416,57 +459,84 @@ public class App {
 			System.out.println("                                                      😎 프로그램 관리 😎");
 			DAO.msg2();
 			System.out.println();
-			String center;
-			System.out.println("                                                      📝 센터 목록 📝");
-			DAO.msg2();
-			System.out.println();
-			List<ClassApp> list = SqlDAO.Center();
-			DAO.showClassCenter(list);
+			System.out.println("                                                   1.프로그램 수정 \n"
+					+ "                                                   2.프로그램 목록");
 			System.out.println();
 			DAO.msg2();
-			System.out.print("                                               ▶ 센터선택 :   ");
-			int center2 = Integer.parseInt(scn.nextLine());
+			System.out.print("                                                ▶ 선택 :   ");
+			int menuprog = Integer.parseInt(scn.nextLine());
+			DAO.msg2();
 
-			switch (center2) {
+			DAO.msg3();
+			switch(menuprog) {
 			case 1:
-				centerName = "스포츠센터";
+				System.out.println();
+				System.out.println("                                                      📝 센터 목록 📝");
+				DAO.msg2();
+				System.out.println();
+				List<ClassApp> list = SqlDAO.Center();
+				DAO.showClassCenter(list);
+				System.out.println();
+				DAO.msg2();
+				System.out.print("                                               ▶ 센터선택 :   ");
+				int center2 = Integer.parseInt(scn.nextLine());
+
+				switch (center2) {
+				case 1:
+					centerName = "스포츠센터";
+					break;
+				case 2:
+					centerName = "어린이센터";
+					break;
+				case 3:
+					centerName = "시니어센터";
+					break;
+				case 4:
+					centerName = "문화예술센터";
+					break;
+				}
+				DAO.msg2();
+				DAO.msg3();
+				List<ClassApp> list2 = SqlDAO.selectProg(centerName);
+				DAO.showSchedProg(list2);
+				DAO.msg2();
+				System.out.println("                                                      😎 프로그램 수정 😎");
+				DAO.msg2();
+				System.out.println();
+
+				System.out.println("                                          !!  수정할 프로그램 정보를 입력해주세요  !!");
+				System.out.println();
+				System.out.print("                                         ▶ 수정할 프로그램 :  ");
+				String prog = scn.nextLine();
+				System.out.print("                                         ▶ 수정할 분반 :  ");
+				String level = scn.nextLine();
+				System.out.print("                                         ▶ 수정할 항목 :  ");
+				String col = scn.nextLine();
+				System.out.print("                                         ▶ 수정할 값 :  ");
+				String newData = scn.nextLine();
+				System.out.println();
+				DAO.msg2();
+				DAO.msg3();
+				DAO.msg2();
+				System.out.println();
+				System.out.println("                                              !!  프로그램 정보 수정 완료  !!");
+
+
+				list2 = DAO.modifyProg(prog, level, col, newData);
+				System.out.println();
+				DAO.showSchedProg(list2);
 				break;
 			case 2:
-				centerName = "어린이센터";
-				break;
-			case 3:
-				centerName = "시니어센터";
-				break;
-			case 4:
-				centerName = "문화예술센터";
-				break;
+				DAO.msg2();
+				System.out.print("                                               🌞🌞 해민 문화센터 '프로그램' 목록 🌞🌞        \n");
+				DAO.msg2();
+
+				list2 = SqlDAO.classTable();
+				System.out.println();
+				DAO.showSchedProg(list2);
 			}
+			
 			DAO.msg2();
-			DAO.msg3();
-			List<ClassApp> list2 = SqlDAO.selectProg(centerName);
-			DAO.showSchedProg(list2);
-
-			DAO.msg2();
-			System.out.println();
-
-			System.out.println("                                          !!  수정할 프로그램 정보를 입력해주세요  !!");
-			System.out.println();
-			System.out.print("                                         ▶ 수정할 프로그램 :   ");
-			String prog = scn.nextLine();
-			System.out.print("                                         ▶ 수정할 분반 :      ");
-			String level = scn.nextLine();
-			System.out.print("                                         ▶ 수정할 항목 :      ");
-			String col = scn.nextLine();
-			System.out.print("                                         ▶ 수정할 값 :       ");
-			String newData = scn.nextLine();
-			System.out.println();
-			DAO.msg2();
-
-			list2 = DAO.modifyProg(prog, level, col, newData);
-			System.out.println();
-			DAO.showSchedProg(list2);
-
-			System.out.println();
 			System.out.println("                                        1.🏠 홈으로  2.⏪ 이전 페이지로  3.🌞 관리자 메뉴로  ");
 			DAO.msg2();
 			System.out.printf("                                         ▶ 선택 :    ");
