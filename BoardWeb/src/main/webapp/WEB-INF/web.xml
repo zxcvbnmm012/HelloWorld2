@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>BoardWeb</display-name>
+  
+  
+  <!-- 서블릿과 url 패턴을 지정 -->
+  <servlet>
+  	<servlet-name>front</servlet-name>
+  	<servlet-class>com.yedam.common.FrontController</servlet-class> <!--  front는 FrontController를 실행함 -->
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>front</servlet-name>  
+  	<url-pattern>*.do</url-pattern> <!--  .do url이 호출되면 front를 실행함 -->
+  	<!--  .do url이 호출되면 FrontController를 호출함 -->
+  </servlet-mapping>
+  
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
+  <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
 </web-app>
+
+
+<!-- application을 실행하면 가장 먼저 실행되는 파일 -> index.html 없으면 index.jsp ... -->
