@@ -12,6 +12,19 @@
     order by board_no
   </select>
   
+  <!--  페이징 조회 -->
+  <select id="selectListWithPaging" parameterType="int" resultType="Board">
+  	select b.*
+    from (select rownum rn, a.*
+          from (select *
+                from tbl_board
+                order by board_no desc) a) b
+    where b.rn >= (#{page} - 1)*5
+    <![CDATA[
+    and b.rn <= #{page} * 5
+    ]]>  <!-- <=를 태그의 시작으로 인식하지 않기위해 CDATA 태그로 감싸줌 -->
+  </select>
+  
   <!--  상세조회(selectBoard) -->
   <select id="selectBoard" parameterType="int" resultType="Board">
   	select board_no

@@ -17,7 +17,10 @@ public class AddBoardControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) //
 			throws ServletException, IOException {
-
+		
+		// 한글처리
+		req.setCharacterEncoding("utf-8");
+		
 		// 요청방식 (GET / POST) 구분 처리
 		if (req.getMethod().equals("GET")) {
 
@@ -42,6 +45,7 @@ public class AddBoardControl implements Control {
 				System.out.println("등록성공");
 				// 목록페이지로 이동
 //				resp.sendRedirect("servlet/boardList.serv"); // sendRedirect : 현재 페이지에서 ()안의 페이지로 새롭게 요청 -> 이동
+				resp.sendRedirect("boardList.do");
 			} else {
 				System.out.println("등록실패");
 			}

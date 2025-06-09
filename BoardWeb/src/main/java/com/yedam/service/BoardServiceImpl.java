@@ -14,8 +14,8 @@ public class BoardServiceImpl implements BoardService {
 	
 	
 	@Override
-	public List<BoardVO> boardList() {
-		return mapper.selectList();
+	public List<BoardVO> boardList(int page) {
+		return mapper.selectListWithPaging(page);
 	}
 	@Override
 	public BoardVO getBoard(int bno) {
@@ -31,6 +31,28 @@ public class BoardServiceImpl implements BoardService {
 		int r = mapper.insertBoard(board); // 처리된 건수 반환.
 		if(r == 1) {
 			sqlSession.commit(); // 커밋처리
+			return true;
+		}
+		return false;
+	}
+	
+	
+	@Override
+	public boolean modifyBoard(BoardVO board) {
+		int r = mapper.updateBoard(board); // 업데이트 후 처리된 건수 반환.
+		if(r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean removeBoard(BoardVO board) {
+		System.out.println(board.getBoardNo());
+		int r = mapper.deleteBoard(board.getBoardNo()); // 업데이트 후 처리된 건수 반환.
+		if(r == 1) {
+			sqlSession.commit();
 			return true;
 		}
 		return false;

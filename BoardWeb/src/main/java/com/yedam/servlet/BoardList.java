@@ -38,10 +38,9 @@ public class BoardList extends HttpServlet {
 		
 		out.print("<h3>hello</h3>");
 		out.print("<p>나는 한글</p>");
-		
 		// 서비스 로직을 활용해서 처리
 		BoardService svc = new BoardServiceImpl();
-		List<BoardVO> list = svc.boardList();
+		List<BoardVO> list = svc.boardList(1);
 		
 		out.print("<table border='1'>");
 		out.print("<thead><tr><th>글번호</th><th>제목</th><th>작성자</th></tr></thead>");
