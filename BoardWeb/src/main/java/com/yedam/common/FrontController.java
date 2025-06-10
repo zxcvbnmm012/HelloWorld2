@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.control.AddBoardControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
+import com.yedam.control.LoginControl;
+import com.yedam.control.LoginFormControl;
+import com.yedam.control.LogoutControl;
 import com.yedam.control.ModifyBoardControl;
 import com.yedam.control.RemoveBoardControl;
 
@@ -38,6 +41,14 @@ public class FrontController extends HttpServlet {
 		map.put("/addBoard.do", new AddBoardControl());   // 등록화면
 		map.put("/modifyBoard.do", new ModifyBoardControl());   // 수정화면
 		map.put("/removeBoard.do", new RemoveBoardControl());  // 삭제화면
+		
+		
+		// member 관련
+		map.put("/loginForm.do", new LoginFormControl()); // 화면
+		map.put("/login.do", new LoginControl()); // id, pw 로그인처리
+		map.put("/logout.do", new LogoutControl()); // id, pw 로그인처리
+		
+		
 	}
 	
 	@Override
@@ -45,7 +56,8 @@ public class FrontController extends HttpServlet {
 		// url이 호출(http://localhost:8080/BoardWeb/boardList.do) -> 페이지 호출 -> Control 반환 
 		// uri : /BoardWeb/boardList.do
 		String uri = req.getRequestURI(); // /BoardWeb/boardList.do
-		String page = uri.substring(9); // /boardList.do
+		String context = req.getContextPath(); // /BoardWeb or /HelloWorld
+		String page = uri.substring(context.length()); // /boardList.do
 		Control sub = map.get(page);
 		sub.exec(req, resp);
 	}

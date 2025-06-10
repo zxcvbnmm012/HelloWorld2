@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.session.SqlSession;
-
-import com.yedam.common.DataSource;
-import com.yedam.mapper.BoardMapper;
 import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
 import com.yedam.vo.BoardVO;
@@ -40,7 +36,7 @@ public class BoardList extends HttpServlet {
 		out.print("<p>나는 한글</p>");
 		// 서비스 로직을 활용해서 처리
 		BoardService svc = new BoardServiceImpl();
-		List<BoardVO> list = svc.boardList(1);
+		List<BoardVO> list = svc.boardList(null);
 		
 		out.print("<table border='1'>");
 		out.print("<thead><tr><th>글번호</th><th>제목</th><th>작성자</th></tr></thead>");

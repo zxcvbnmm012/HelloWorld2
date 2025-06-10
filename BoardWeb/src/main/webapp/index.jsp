@@ -11,6 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:forward page="boardList.do"/>
 	<% // 자바영역
 	// 주석문..
 	// sample.jsp -> sample_jsp.java -> sample_jsp.class 실행
@@ -23,7 +24,7 @@
 	} // end of for
 	// 자바영역
 	BoardService svc = new BoardServiceImpl();
-	List<BoardVO> list = svc.boardList();
+	List<BoardVO> list = svc.boardList(null);
 	out.print("<ul>");
 	for (BoardVO board : list){
 	%>

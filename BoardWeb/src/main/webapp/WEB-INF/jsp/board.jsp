@@ -5,10 +5,20 @@
 
 <%
 	BoardVO board = (BoardVO) request.getAttribute("board"); 
+	String pg = (String) request.getAttribute("page"); 
+	String sc = (String) request.getAttribute("searchCondition"); 
+	String kw = (String) request.getAttribute("keyword"); 
+
+	String logId = (String) session.getAttribute("logId");
+
  %>
     <h3>상세화면(board.jsp)</h3>
     <form action="modifyBoard.do">
     <input type="hidden" name="bno" value="<%=board.getBoardNo() %>">
+    <input type="hidden" name="page" value="<%=pg %>">
+    <input type="hidden" name="searchCondition" value="<%=sc %>">
+    <input type="hidden" name="keyword" value="<%=kw %>">
+    
     <table class="table">
         <tr>
             <th>글번호</th><td><%=board.getBoardNo() %></td>
@@ -28,8 +38,13 @@
         </tr>
         <tr>
             <td colspan="4" align="center">
+            	 <%if (logId ==board.getWriter()) {%>
                 <input type="submit" value="수정" class="btn btn-warning">
                 <button class="btn btn-danger" type="button">삭제</button>
+                <%} else{ %>
+                <input type="submit" value="수정" class="btn btn-warning" disabled>
+                <button class="btn btn-danger" type="button" disabled>삭제</button>
+                <%} %>
             </td>
         </tr>
     </table>
