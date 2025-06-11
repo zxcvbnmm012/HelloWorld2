@@ -3,6 +3,20 @@
   <display-name>BoardWeb</display-name>
   
   
+  <listener>
+    <listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
+  </listener>
+  
+  <!--  tiles 서블릿. -->
+  <servlet>
+    <servlet-name>Tiles Dispatch Servlet</servlet-name>
+    <servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Tiles Dispatch Servlet</servlet-name>
+    <url-pattern>*.tiles</url-pattern>
+  </servlet-mapping>
+  
   <!-- 서블릿과 url 패턴을 지정 -->
   <servlet>
   	<servlet-name>front</servlet-name>

@@ -69,3 +69,8 @@ values ('user05', '¹ÚÀÚ¹Ù', '1234', 'User');
 
 Insert into tbl_member
 values ('user99', '±è½Ã¿í', '1234', 'User');
+
+Insert into tbl_member
+values ('guest', '±è°ü¸®', '1234', 'Admin');
+
+select * from tbl_member;

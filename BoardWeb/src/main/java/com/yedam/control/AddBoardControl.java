@@ -25,7 +25,7 @@ public class AddBoardControl implements Control {
 		if (req.getMethod().equals("GET")) {
 
 			// WEB-INF/jsp/addBoard.jsp
-			req.getRequestDispatcher("WEB-INF/jsp/addBoard.jsp").forward(req, resp); // getRequestDispatcher("") :
+			req.getRequestDispatcher("user/addBoard.tiles").forward(req, resp); // getRequestDispatcher("") :
 																						// 매개값으로 들어오는 페이지를 재진행하는 메소드
 		} else if (req.getMethod().equals("POST")) { // 등록
 			// POST 요청
