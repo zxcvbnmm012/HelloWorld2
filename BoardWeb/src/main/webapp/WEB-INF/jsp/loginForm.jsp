@@ -14,7 +14,7 @@
     </head>
     <body class="bg-primary">
     <%
-    	String msg = (String) request.getAttribute("msg");
+      String msg = (String) request.getAttribute("msg");
     %>
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
@@ -24,19 +24,19 @@
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header">
-                                    <h3 class="text-center font-weight-light my-4">Login</h3>
-                                    <%if (msg != null) { %>
-                                    <span style="color: red"><%=msg %></span>
-                                    <%} %>
+                                        <h3 class="text-center font-weight-light my-4">Login</h3>
+                                        <%if (msg != null) {%>
+                                        <span style="color: red"><%=msg %></span>
+                                        <%} %>
                                     </div>
                                     <div class="card-body">
                                         <form action="login.do" method="post">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="text" name="mid" placeholder="name@example.com" />
-                                                <label for="inputEmail">Email address</label>
+                                                <input class="form-control" type="text" name="mid" placeholder="Your ID" />
+                                                <label for="inputEmail">Your ID</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control"  type="password" name="pass" placeholder="Password" />
+                                                <input class="form-control" type="password" name="pass" value="1111" placeholder="Password" />
                                                 <label for="inputPassword">Password</label>
                                             </div>
                                             <div class="form-check mb-3">
