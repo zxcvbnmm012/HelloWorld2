@@ -1,6 +1,7 @@
 package com.yedam.control;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ public class AddReplyControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 댓글등록. 원본글번호,댓글작성자,댓글
+		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/json;charset=utf-8");
 		String bno = req.getParameter("bno");// 원본글번호.
 		String reply = req.getParameter("reply");// 댓글내용.
@@ -29,6 +31,7 @@ public class AddReplyControl implements Control {
 		rvo.setBoardNo(Integer.parseInt(bno));
 		rvo.setReply(reply);
 		rvo.setReplyer(replyer);
+		rvo.setReplyDate(new Date());
 		
 		// json 문자열 생성.
 		Map<String, Object> map = new HashMap<>();

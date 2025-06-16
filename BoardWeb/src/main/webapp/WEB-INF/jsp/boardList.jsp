@@ -53,54 +53,52 @@
   </table>
   
   
-  <!-- paging 시작. -->
+<!-- paging 시작. -->
 <nav aria-label="Page navigation example">
-<ul class="pagination justify-content-center">
-  <!-- 이전페이지 활성화. -->
-  <c:choose>
-  	<c:when test="${!pageInfo.prev }">
-  		<li class="page-item disabled">
-  		  <a class="page-link">Previous</a>
-  		</li>
-  	</c:when>
-  	<c:otherwise>
-  		<li class="page-item">
-   		  <a class="page-link" href="boardList.do?page=${pageInfo.start - 1 }">Previous</a>
-  		</li>
-  	</c:otherwise>
-  </c:choose>
-  
-  <!-- paging 정보를 활용. -->
-  <c:forEach var="p" begin="${pageInfo.start }" end="${pageInfo.end }">
- 	 <c:choose>
-  		<c:when test="${p ne pageInfo.currentPage }">
-  			<li class="page-item">
-   				<a class="page-link" href="boardList.do?searchCondition=${search.searchCondition }&keyword=${search.keyword }&page=${p }">${p }</a>
- 	   	    </li>
-  		</c:when>
-  		<c:otherwise>
- 	 		<li class="page-item active" aria-current="page">
-    			<span class="page-link">${p }</span>
-  	 		</li>
-		</c:otherwise>
-  	 </c:choose>
-  </c:forEach>
+  <ul class="pagination justify-content-center">
+    <!-- 이전페이지 활성화. -->
+    <c:choose>
+      <c:when test="${!pageInfo.prev }">
+        <li class="page-item disabled">
+          <a class="page-link">Previous</a>
+        </li>
+      </c:when>
+      <c:otherwise>
+        <li class="page-item">
+          <a class="page-link" href="boardList.do?page=${pageInfo.start - 1 }">Previous</a>
+        </li>
+      </c:otherwise>
+    </c:choose>
 
-  <!-- 이후페이지 활성화. -->
-  <c:choose>
-  	<c:when test="${!pageIngo.next }">
-  		<li class="page-item disabled">
-  		  <a class="page-link">Next</a>
-  		</li>
-  	</c:when>
-  	<c:otherwise>
-  		<li class="page-item">
-   		  <a class="page-link" href="boardList.do?page=${pageInfo.end +1 }">Next</a>
-  		</li>
-  	</c:otherwise>
-  </c:choose>
-  
-</ul>
-</nav>  
+    <!-- paging 정보를 활용. -->
+    <c:forEach var="p" begin="${pageInfo.start }" end="${pageInfo.end }">
+      <c:choose>
+        <c:when test="${p ne pageInfo.currentPage }">
+          <li class="page-item">
+            <a class="page-link" href="boardList.do?searchCondition=${search.searchCondition }&keyword=${search.keyword }&page=${p}">${p }</a>
+          </li>
+        </c:when>
+        <c:otherwise>
+          <li class="page-item active" aria-current="page">
+            <span class="page-link">${p }</span>
+          </li>
+        </c:otherwise>
+      </c:choose>
+    </c:forEach>
 
-  <!-- paging 종료. -->
+    <!-- 이후페이지 활성화. -->
+    <c:choose>
+      <c:when test="${!pageInfo.next }">
+        <li class="page-item disabled">
+          <a class="page-link">Next</a>
+        </li>
+      </c:when>
+      <c:otherwise>
+        <li class="page-item">
+          <a class="page-link" href="boardList.do?page=${pageInfo.end + 1 }">Next</a>
+        </li>
+      </c:otherwise>
+    </c:choose>
+  </ul>
+</nav>
+<!-- paging 종료. -->

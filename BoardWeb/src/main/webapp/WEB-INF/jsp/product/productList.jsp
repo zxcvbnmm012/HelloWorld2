@@ -18,21 +18,20 @@
     </tr>
   </table>
   <table class="table">
-  <thead>
-    <tr>
-      <th>글번호</th>
-      <th>댓글내용</th>
-      <th>작성자</th>
-      <th>삭제</th>
-    </tr>
-   </thead>
-   <tbody>
-   
-   </tbody>
+    <thead>
+      <tr>
+        <th>글번호</th>
+        <th>댓글내용</th>
+        <th>작성자</th>
+        <th>삭제</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
   </table>
   <p>${logId }</p>
 </div>
 <script>
-	const logId = "${logId}";
+  const logId = "${logId}";
 </script>
-<script src="js/promise.js"></script>
+<script src="js/service.js"></script>
+<script src="js/ajax2.js"></script>

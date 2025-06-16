@@ -25,9 +25,9 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<ReplyVO> replyList(int bno) {
+	public List<ReplyVO> replyList(int bno, int page) {
 		// 댓글목록(원본글번호가 필요)
-		return mapper.selectList(bno);
+		return mapper.selectList(bno, page);
 	}
 
 	@Override
@@ -45,6 +45,12 @@ public class ReplyServiceImpl implements ReplyService {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public int totalCount(int bno) {
+		// 댓글건수
+		return mapper.selectTotal(bno);
 	}
 
 }
