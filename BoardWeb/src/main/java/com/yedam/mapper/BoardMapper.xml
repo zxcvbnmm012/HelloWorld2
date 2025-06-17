@@ -104,5 +104,34 @@
   	delete tbl_board
   	where board_no = #{boardNo}
   </delete>
+  
+  <select id="selectUserByCount" resultType="map">
+  	select writer as "writer"
+  			, member_name as "memberName"
+  			, count(1) as "cnt"
+	from tbl_board b
+	join tbl_member m
+	on b.writer = m.member_id
+	group by writer, member_name
+  </select>
+  
+  
+  <!--  캘린더  -->
+  <select id="selectEvent" resultType="map">
+  	select title as "title"
+  			, event_start as "start"
+  			, event_end as "end"
+  	from tbl_events
+  </select>
+  
+  <insert id="insertEvent" parameterType="com.yedam.vo.EventVO">
+  	insert into tbl_events
+  	values (#{title}, #{start}, #{end})
+  </insert>
+  
+  <delete id="deleteEvent" parameterType="com.yedam.vo.EventVO">
+  	delete tbl_events
+  	where title = #{title}
+  </delete>
 
 </mapper>
