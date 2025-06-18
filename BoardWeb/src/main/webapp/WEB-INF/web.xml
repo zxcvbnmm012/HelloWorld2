@@ -2,6 +2,16 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>BoardWeb</display-name>
   
+  <!--  필터, url패턴. -->
+  <!--  필터 실행 순서 : 먼저 등록된 필터가 먼저 실행됨. -->
+  <filter>
+  	<filter-name>log</filter-name>
+  	<filter-class>com.yedam.common.LogFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>log</filter-name>
+  	<url-pattern>/*</url-pattern>  <!--  현재 경로 기준 모든 곳에 필터 지정 -->
+  </filter-mapping>
   
   <listener>
     <listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>

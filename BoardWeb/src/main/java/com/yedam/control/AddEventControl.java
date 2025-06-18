@@ -12,7 +12,7 @@ import com.yedam.common.Control;
 import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
 
-public class RemoveEventControl implements Control {
+public class AddEventControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,7 +27,7 @@ public class RemoveEventControl implements Control {
 		map.put("end", end);
 
 		BoardService svc = new BoardServiceImpl();
-		if (svc.removeEvent(map)) {
+		if (svc.addEvent(map)) {
 			resp.getWriter().print("{\"retCode\": \"Success\"}");
 		} else {
 			resp.getWriter().print("{\"retCode\": \"Fail\"}");

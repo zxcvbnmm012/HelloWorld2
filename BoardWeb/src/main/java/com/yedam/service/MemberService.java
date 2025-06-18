@@ -9,4 +9,11 @@ public interface MemberService {
 	
 	// 회원목록
 	public List<MemberVO> memberList(String order);
+	
+	// 회원등록
+	public boolean addMember(MemberVO member);
+	
+	// 회원조회
+	public boolean getMemberInfo(String id);
+	
 }

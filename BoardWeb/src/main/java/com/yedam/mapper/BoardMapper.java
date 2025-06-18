@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.yedam.common.SearchDTO;
 import com.yedam.vo.BoardVO;
-import com.yedam.vo.EventVO;
 
 /*
  * 인터페이스(BoardMapper) - XML(BoardMapper.xml) 매칭.
@@ -20,10 +19,9 @@ public interface BoardMapper {
 	public int deleteBoard(int bno);
 	//전체 건수.
 	public int selectCount(SearchDTO search);
-	public List<Map> selectUserByCount();
-	
-	// 캘린더
-	public List<Map> selectEvent();
-	public int insertEvent(EventVO event);
-	public int deleteEvent(EventVO event);
+	public List<Map<String, Object>> selectUserByCount();
+	//fullcalendar
+	public List<Map<String, String>> selectEvent();
+	public int insertEvent(Map<String, String> map);
+	public int deleteEvent(Map<String, String> map);
 }

@@ -28,7 +28,6 @@ public class ReplyListControl implements Control {
 		String bno = req.getParameter("bno");
 		String page = req.getParameter("page");
 		page = "1";
-
 		ReplyService svc = new ReplyServiceImpl();
 		List<ReplyVO> list = svc.replyList(Integer.parseInt(bno), Integer.parseInt(page));
 		// DataTable용.
@@ -37,7 +36,6 @@ public class ReplyListControl implements Control {
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(map);
-		System.out.println(json);
 
 		PrintWriter out = resp.getWriter();
 		out.print(json);

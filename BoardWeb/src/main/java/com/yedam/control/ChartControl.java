@@ -18,13 +18,14 @@ public class ChartControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		resp.setContentType("text/json;charset=utf-8");
 		BoardService svc = new BoardServiceImpl();
-		List<Map> list = svc.chartCount();
-		
+		List<Map<String, Object>> list = svc.chartCount();
+
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(list);
-		
+
 		resp.getWriter().print(json);
 	}
 

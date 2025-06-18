@@ -4,25 +4,19 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.mapper.BoardMapper">
 
-  <!-- parameterType : 파라미터(입력) 타입 / resultType : 반환되는 타입 -->
-
-  <!-- 조회 (selectBoard) -->
-  <select id="selectList" resultType="Board">  <!-- alias 사용 -->
+  <!-- 조회(selectList) -->
+  <select id="selectList" resultType="Board">
     select * from tbl_board
-    order by board_no
+    order by board_no desc
   </select>
   
-  <!--  페이징 조회 -->
-  
+  <!-- 페이징 조회. -->
   <select id="selectListWithPaging" parameterType="Search" resultType="Board">
     select b.*
     from  (select rownum rn, a.*
            from  (select *
                   from tbl_board
-                                  <!-- 조건문 -->
                   <choose>
-                                  	<!--  java 코드  ; seachCondition이 null이 아니고 searchCondition이 T라면 -->
-                	<!--  when : if / else if  -->
                     <when test="searchCondition != null and searchCondition == 'T'.toString() ">
                       where title like '%'||#{keyword}||'%'
                     </when>
@@ -37,11 +31,58 @@
            where b.rn > (#{page} - 1) * 5
     <![CDATA[
     and   b.rn <= #{page} * 5
-    ]]> <!-- <=를 태그의 시작으로 인식하지 않기위해 CDATA 태그로 감싸줌 -->
+    ]]>
   </select>
   
+  <!-- 상세조회(selectBoard) -->
+  <select id="selectBoard" parameterType="int" resultType="Board">
+    select board_no
+          ,title
+          ,content
+          ,writer
+          ,write_date
+          ,read_cnt
+    from tbl_board
+    where board_no = #{bno}
+  </select>
   
-  <!--  전체 카운트 조회 -->
+  <!-- 조회수증가. -->
+  <update id="updateReadCnt" parameterType="int">
+    update tbl_board
+    set    read_cnt = read_cnt + 1
+    where board_no = #{bno}
+  </update>
+  
+  <!-- 등록(insertBoard) -->
+  <insert id="insertBoard" parameterType="Board">
+    insert into tbl_board (board_no, title, content, writer)
+    values(board_seq.nextval, #{title}, #{content}, #{writer})
+  </insert>
+  
+  <!-- 수정(updateBoard) -->
+  <update id="updateBoard" parameterType="Board">
+    update tbl_board
+    <set>    
+    <if test="title != null">
+        title = #{title},
+    </if>
+    <if test="content != null">
+        content = #{content},
+    </if>
+    <if test="writer != null">
+        writer = #{writer}
+    </if>
+    </set>
+    where board_no = #{boardNo}
+  </update>
+  
+  <!-- 삭제(deleteBoard) parameterType="int" -->
+  <delete id="deleteBoard" parameterType="int">
+    delete from tbl_board
+    where board_no = #{bno}
+  </delete>
+  
+  <!-- 전체 건수. -->
   <select id="selectCount" resultType="int" parameterType="Search">
     select count(1) from tbl_board
     <choose>
@@ -57,81 +98,34 @@
     </choose>
   </select>
   
-  <!--  상세조회(selectBoard) -->
-  <select id="selectBoard" parameterType="int" resultType="Board">
-  	select board_no
-  	       ,title
-  	       ,content
-  	       ,writer
-  	       ,write_date
-  	       ,read_cnt
-  	from tbl_board
-  	where board_no = #{bno}
-  </select>
-  
-  <!--  조회수증가 -->
-  <update id="updateReadCnt" parameterType="int">
-  	update tbl_board
-  	set    read_cnt = read_cnt + 1
-  	where  board_no = #{bno}
-  </update>
-  
-  <!--  등록(insertBoard) -->
-  <insert id="insertBoard" parameterType="com.yedam.vo.BoardVO">
-  	insert into tbl_board (board_no, title, content, writer)
-  	values(board_seq.nextval, #{title}, #{content}, #{writer})  <!-- #{} : boardVO가 가지고 있는 필드 -->
-  </insert>
-  
-  <!--  수정(updateBoard) -->
-  <update id="updateBoard" parameterType="com.yedam.vo.BoardVO">
-  	update tbl_board
-  	<set> <!-- set 태그로 만들어주면 if 태그 안의 , 처리해줌 -->
-  	<if test="title != null">
-  		title = #{title},
-  	</if>    
-  	<if test="content != null">
-  		content = #{content},
-  	</if>
-  	<if test="writer != null">
-  		writer = #{writer}
-  	</if>
-  	</set>
-  	where  board_no = #{boardNo}
-  </update>
-  
-  <!--  삭제(deleteBoard) -->
-  <delete id="deleteBoard" parameterType="int">
-  	delete tbl_board
-  	where board_no = #{boardNo}
-  </delete>
-  
   <select id="selectUserByCount" resultType="map">
-  	select writer as "writer"
-  			, member_name as "memberName"
-  			, count(1) as "cnt"
-	from tbl_board b
-	join tbl_member m
-	on b.writer = m.member_id
-	group by writer, member_name
+    select writer as "writer"
+         , member_name as "memberName"
+         , count(1) as "cnt"
+		from tbl_board b
+		join tbl_member m
+		on b.writer = m.member_id
+		group by writer, member_name
   </select>
   
-  
-  <!--  캘린더  -->
-  <select id="selectEvent" resultType="map">
-  	select title as "title"
-  			, event_start as "start"
-  			, event_end as "end"
-  	from tbl_events
+  <select id="selectEvent">
+    select title as "title"
+          ,start_date as "start"
+          ,end_date as "end"
+    from tbl_events
   </select>
-  
-  <insert id="insertEvent" parameterType="com.yedam.vo.EventVO">
-  	insert into tbl_events
-  	values (#{title}, #{start}, #{end})
+
+  <insert id="insertEvent" parameterType="map">
+    insert into tbl_events 
+    values (#{title}, #{start}, #{end})
   </insert>
   
-  <delete id="deleteEvent" parameterType="com.yedam.vo.EventVO">
-  	delete tbl_events
-  	where title = #{title}
+  <delete id="deleteEvent" parameterType="map">
+    delete from tbl_events
+    where title = #{title}
+    and   start_date = #{start}
+    and   end_date = #{end}
   </delete>
-
+  
 </mapper>
+

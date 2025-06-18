@@ -5,6 +5,7 @@
 <configuration>
   <settings>
   	<setting name="mapUnderscoreToCamelCase" value="true"/>
+  	<setting name="jdbcTypeForNull" value="NULL"/>  <!--  img가 없으면 tbl_member(img)에 null 값이 들어갈 수 있도록 함. -->
   </settings>
   <typeAliases>
   	<typeAlias alias="Board" type="com.yedam.vo.BoardVO"/>

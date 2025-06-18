@@ -11,24 +11,18 @@ import com.yedam.service.BoardService;
 import com.yedam.service.BoardServiceImpl;
 import com.yedam.vo.BoardVO;
 
-public class RemoveBoardControl implements Control{
+public class RemoveBoardControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 단건조회
-		// http://localhost:8080/removeBoard.do?bno=34
 		String bno = req.getParameter("bno");
-		
+		// 글상세조회.
 		BoardService svc = new BoardServiceImpl();
-		BoardVO board = svc.getBoard(Integer.parseInt(bno));
-		
-		req.setAttribute("board", board);
-		svc.removeBoard(board);
+		svc.removeBoard(Integer.parseInt(bno));
+
 		// 요청재지정(페이지이동)
 		resp.sendRedirect("boardList.do");
-		
-		
-		
+
 	}
-	
+
 }
