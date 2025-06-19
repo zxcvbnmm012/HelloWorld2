@@ -8,7 +8,10 @@ const defaultNum = 10;
 function makeRow(center){
 
 	let tr = document.createElement('tr');
-
+	tr.addEventListener('click', function(e){
+		window.open('map.jsp?lat=' + center.lat + '&lng=' + center.lng + '&centerName=' + center.centerName);
+		
+	});
 	for(const prop of ['id', 'centerName','phoneNumber']){
 		let td = document.createElement('td'); //<td></td>
 		td.innerHTML = center[prop];  // center['id'] // <td>1</td>
